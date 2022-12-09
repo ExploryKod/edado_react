@@ -1,13 +1,13 @@
 version: "3.8"
 
 services:
-    php:
+    backend:
         build:
-            context: .
+            context: ./phpConf
             dockerfile: Dockerfile
         restart: always
         ports:
-            - "1300:80"
+            - "1320:80"
         volumes:
             - ./app:/var/www/html
 
@@ -25,16 +25,15 @@ services:
         ports:
             -  "1301:8080"
 
-    node:
-        image: "node:8"
-        user: "node"
-        working_dir: /var/www/html
-        environment:
-            - NODE_ENV=production
+    frontend:
+        build:
+            context: ./reactConf
+            dockerfile: Dockerfile
+        ports:
+            - "3001:3001"
         volumes:
-            - ./app:/var/www/html
-        command: > 
-            bash -c "npm install"
+            - ./frontend:/project
+        command: npm install && npm run start
 
 volumes:
     db_glad_blog:
