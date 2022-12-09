@@ -1,0 +1,22 @@
+@import "variables.css";
+
+/* There is no cursor property in boostrap - as we don't use scss we generate here a custom css class */
+.custom-pointer {
+    cursor:pointer;
+}
+/* To impose a very high z-index as bootstrap is not optimal */
+.upper-z-index {
+   z-index:999!important;
+}
+
+.fix-width {
+    max-width: 5rem;
+}
+
+.fix-height {
+    max-height:5rem;
+}
+
+.height-300 {
+    max-height: 300px;
+}

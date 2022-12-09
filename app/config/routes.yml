@@ -1,0 +1,10 @@
+index:
+  path: /
+  controller: App\Controller\PostController
+  action: home
+  methods:
+    - GET
+    - POST
+
+showOne:
+  path: /post/[id]
