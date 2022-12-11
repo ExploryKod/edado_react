@@ -1,5 +1,4 @@
-import {ChangeEvent, Dispatch, SetStateAction, useState} from "react";
-
+import {ChangeEvent, Dispatch, SetStateAction, useEffect, useState} from "react";
 
 export interface IFormData {
     username: string,
@@ -10,6 +9,19 @@ export default function Login() {
 
         const [formData, setFormData] = useState<IFormData>({password: "", username: ""})
         const [username, setUsername] = useState<string>("")
+
+    useEffect( () => {
+
+        fetch('http://localhost:1320', {
+            method: "POST",
+            mode: "cors",
+            credentials: "include"
+        } )
+            .then((response) =>  response.json())
+            .then((data) => {
+                setFormData(data);
+            }).catch(error => console.log("Erreur dans la requête fetch : " + error))
+    }, [])
 
         const handleChange = (e: ChangeEvent) => {
             setFormData(prevState => {

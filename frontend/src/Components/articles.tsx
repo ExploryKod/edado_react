@@ -23,8 +23,6 @@ function Articles() {
             }).catch(error => console.log("Erreur dans la requête fetch : " + error))
     }, [])
 
-    fetchPost.post?.map( (item: any) => console.log(item))
-
     return (
             <>
             {fetchPost.post?.map( (item: any, key: any) => (

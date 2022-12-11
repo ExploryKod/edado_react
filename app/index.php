@@ -10,6 +10,16 @@ header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Headers: authorization, content-type");
 header("Access-Control-Allow-Credentials: true");
 
+//$json = file_get_contents("php://input");
+//
+//var_dump($_SERVER);
+//
+//echo json_encode([
+//    "message" => "ca marche je pense...",
+//    "json" => json_decode($json, true),
+//    "post" => $_POST
+//]);
+
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") die;
 
 use Gladblog\Route\Route;
