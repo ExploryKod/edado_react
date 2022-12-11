@@ -1,8 +1,6 @@
 <?php
 namespace Gladblog\Controllers;
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+
 use Gladblog\Factory\PDOFactory;
 use Gladblog\Manager\UserManager;
 use Gladblog\Route\Route;
@@ -105,7 +103,5 @@ class LoginController extends AbstractController
             $this->render("login.php", ["message" => 'Vous avez été déconnecté'], "login", $links, $scripts);
             exit();
         }
-
     }
-
 }

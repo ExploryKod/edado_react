@@ -17,13 +17,17 @@ class PostController extends AbstractController
     {
         $showAllPosts = new PostManager(new PDOFactory());
         $posts = $showAllPosts->getAllPosts();
+        $articles = [];
+        foreach($posts as $post) {
+            $articles[] = [
+                'title' => $post->getTitle(),
+                'post' => $post->getContent()
+            ];
+        }
 
-        $styleLinks = [];
-        $scripts = [];
+        $this->renderJson(['post' => $articles]);
 
-        $this->render("home.php", [
-            "posts" => $posts
-        ], "Votre homepage", $styleLinks, $scripts);
+        exit();
     }
 
     #[Route('/writer', name: "writerpage", methods: ["GET"])]

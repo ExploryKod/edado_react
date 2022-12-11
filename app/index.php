@@ -6,9 +6,17 @@
 //$yaml = Yaml::parseFile(dirname(__FILE__) . "/config/routes.yml");
 //$controller = new PostController();
 
+header("Access-Control-Allow-Origin: http://localhost:3000");
+header("Access-Control-Allow-Headers: authorization, content-type");
+header("Access-Control-Allow-Credentials: true");
+
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") die;
+
 use Gladblog\Route\Route;
 
 require_once 'vendor/autoload.php';
+
+session_start();
 
 $controllerDir = dirname(__FILE__) . '/src/Controllers';
 

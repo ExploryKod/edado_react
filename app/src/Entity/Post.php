@@ -7,7 +7,7 @@
 
 namespace Gladblog\Entity;
 
-class Post extends BaseEntity
+class Post extends BaseEntity implements \JsonSerializable
 {
     private int | null $postid;
     private string | null $content;
@@ -137,5 +137,10 @@ class Post extends BaseEntity
     {
         $this->title = $title;
         return $this;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return ["content" => $this->getContent()];
     }
 }

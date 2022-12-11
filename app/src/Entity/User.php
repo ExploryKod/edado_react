@@ -168,5 +168,4 @@ class User extends BaseEntity implements UserInterface, PasswordProtectedInterfa
             return false;
         }
     }
-
 }

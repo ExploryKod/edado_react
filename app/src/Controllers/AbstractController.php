@@ -2,6 +2,8 @@
 
 namespace Gladblog\Controllers;
 
+use JetBrains\PhpStorm\NoReturn;
+
 abstract class AbstractController
 {
 
@@ -25,9 +27,9 @@ abstract class AbstractController
      */
     public function render(string $view, array $args = [], string $title = "Document", array $styleLinks = [], array $styleScripts = [])
     {
-        $header = dirname(__DIR__, 2) . '/views/header.php';
-        $view = dirname(__DIR__, 2) . '/views/' . $view;
-        $base = dirname(__DIR__, 2) . '/views/base.php';
+        $header = dirname(__DIR__, 3) . '/views/header.php';
+        $view = dirname(__DIR__, 3) . '/views/' . $view;
+        $base = dirname(__DIR__, 3) . '/views/base.php';
         $styleLink = [];
         $relativePublicLink = [];
         $relativePublicScript = [];
@@ -35,7 +37,7 @@ abstract class AbstractController
         {
             foreach($styleLinks as $link)
             {
-                $absoluteLink = dirname(__DIR__,2) . $link;
+                $absoluteLink = dirname(__DIR__,3) . $link;
                 $relativeLink = $link;
                 $styleLink[] = $absoluteLink;
                 $relativePublicLink[] = $relativeLink;
@@ -46,7 +48,7 @@ abstract class AbstractController
         {
             foreach($styleScripts as $script)
             {
-                $absoluteScript = dirname(__DIR__,2) . $script;
+                $absoluteScript = dirname(__DIR__,3) . $script;
                 $relativeScript = $script;
                 $styleLink[] = $absoluteScript;
                 $relativePublicScript[] = $relativeScript;
@@ -75,5 +77,12 @@ abstract class AbstractController
         $_pageRelativeScripts = $relativePublicScript;
         require_once $base;
         exit();
+    }
+
+    public function renderJson($content): void
+    {
+        header("Content-Type: application/json");
+        echo json_encode($content);
+        exit;
     }
 }
