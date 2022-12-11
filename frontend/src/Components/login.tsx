@@ -6,10 +6,6 @@ export interface IFormData {
     password: string
 }
 
-export interface IConnectProps {
-    setUsername: Dispatch<SetStateAction<string>>
-}
-
 export default function Login() {
 
         const [formData, setFormData] = useState<IFormData>({password: "", username: ""})

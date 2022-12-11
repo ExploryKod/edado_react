@@ -20,6 +20,7 @@ class PostController extends AbstractController
         $articles = [];
         foreach($posts as $post) {
             $articles[] = [
+                'id' => $post->getIdpost(),
                 'title' => $post->getTitle(),
                 'post' => $post->getContent()
             ];

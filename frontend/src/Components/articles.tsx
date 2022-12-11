@@ -27,8 +27,8 @@ function Articles() {
 
     return (
             <>
-            {fetchPost.post?.map( (item: any) => (
-                    <div className="main-category-container">
+            {fetchPost.post?.map( (item: any, key: any) => (
+                    <div className="main-category-container"  key={key}>
 
                             <div
                                 className="background-text"
