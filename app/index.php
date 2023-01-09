@@ -1,25 +1,14 @@
 <?php
-
-//use Gladblog\Controllers\PostController;
-//use Symfony\Component\Yaml\Yaml;
-//require_once "vendor/autoload.php";
-//$yaml = Yaml::parseFile(dirname(__FILE__) . "/config/routes.yml");
-//$controller = new PostController();
-
 header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Access-Control-Allow-Headers: authorization, content-type");
 header("Access-Control-Allow-Credentials: true");
 
-//$json = file_get_contents("php://input");
-//
-//var_dump($_SERVER);
-//
-//echo json_encode([
-//    "message" => "ca marche je pense...",
-//    "json" => json_decode($json, true),
-//    "post" => $_POST
-//]);
+$username = $_REQUEST['username'] ?? ''; $password = $_REQUEST['password'] ?? '';
 
+if (!$username || !$password) {
+    echo json_encode([ 'status' => 'error', 'message' => 'username or password parameters missing' ]);
+    exit;
+}
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") die;
 
 use Gladblog\Route\Route;

@@ -15,7 +15,7 @@ export default function Login() {
         fetch('http://localhost:1320', {
             method: "POST",
             mode: "cors",
-            credentials: "include"
+            credentials: "include",
         } )
             .then((response) =>  response.json())
             .then((data) => {
@@ -37,6 +37,8 @@ export default function Login() {
             e.preventDefault()
             setUsername(formData.username)
         }
+
+        console.log(formData);
 
         return (
             <form onSubmit={handleSubmit}>

@@ -85,4 +85,18 @@ abstract class AbstractController
         echo json_encode($content);
         exit;
     }
+
+    public function getJsonFromJs(): void {
+
+        header("Content-Type: application/json");
+        $json = file_get_contents("php://input");
+
+        echo json_encode([
+            "message" => "ca marche je pense...",
+            "json" => json_decode($json, true),
+            "post" => $_POST
+        ]);
+
+    }
+
 }

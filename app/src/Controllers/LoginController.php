@@ -35,7 +35,6 @@ class LoginController extends AbstractController
     #[Route('/login', name: "login", methods: ["POST"])]
     public function login()
     {
-
         $formUsername = $_POST['username'];
         $formPwd = $_POST['password'];
         $userManager = new UserManager(new PDOFactory());
@@ -48,6 +47,7 @@ class LoginController extends AbstractController
         if (!$user) {
             $message = "Vous n'êtes pas enregistré chez nous.";
             $links = ["/public/css/login.css"];
+
             $this->render("login.php", [
                 "message" => $message,
                 "userData" => $userManager->getByUsername($formUsername)->getUsername(),

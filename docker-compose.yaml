@@ -33,7 +33,6 @@ services:
             - "3000:3000"
         volumes:
             - ./frontend:/project
-        command: npm run start
 
 volumes:
     db_glad_blog:
